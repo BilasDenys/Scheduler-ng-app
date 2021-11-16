@@ -1,3 +1,51 @@
 <div class="modal">
-  <div class="modal_content"></div>
+  <div class="modal__content">
+    <div class="modal__title">Login</div>
+    <form class="modal__form form" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form__field">
+        <input
+          type="text"
+          class="form__control"
+          formControlName="email"
+          placeholder="Эл.почта"
+        />
+
+        <div class="form__validation" *ngIf="form.touched && form.invalid">
+          <small class="form__error" *ngIf="email?.hasError('email')">
+            Hе корректный адрес электронной почты
+          </small>
+          <small class="form__error" *ngIf="email?.hasError('required')">
+            Введите адрес электронной почты
+          </small>
+        </div>
+      </div>
+
+      <div class="form__field">
+        <input
+          type="password"
+          class="form__control"
+          formControlName="password"
+          placeholder="Пароль"
+        />
+
+        <div class="form__validation" *ngIf="form.touched && form.invalid">
+          <small class="form__error" *ngIf="password?.hasError('required')">
+            Введите пароль
+          </small>
+          <small class="form__error" *ngIf="password?.hasError('minlength')">
+            Поле должно состоять более 6 или более символов
+          </small>
+        </div>
+      </div>
+
+      <div class="form__redirect">
+        Еще нет аккаунта?
+        <a class="form__link" routerLink="/admin/register"
+          >Зарегистрироваться</a
+        >
+      </div>
+
+      <button class="form__action" type="submit">Войти</button>
+    </form>
+  </div>
 </div>

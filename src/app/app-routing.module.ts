@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./feature/feature.module').then((m) => m.FeatureModule),
   },
-  {path: '**', component: PageNotFoundComponent}
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

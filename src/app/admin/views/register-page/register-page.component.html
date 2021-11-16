@@ -1,1 +1,99 @@
-<p>register-page works!</p>
+<div class="modal">
+  <div class="modal__content">
+    <div class="modal__title">Регистрация</div>
+    <form class="modal__form form" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form__field">
+        <input
+          type="text"
+          class="form__control"
+          formControlName="firstName"
+          placeholder="Имя"
+        />
+
+        <div class="form__validation" *ngIf="form.touched && form.invalid">
+          <small class="form__error" *ngIf="firstName?.hasError('minlength')"
+            >Поле должно состоять более 2 или более символов</small
+          >
+        </div>
+      </div>
+
+      <div class="form__field">
+        <input
+          type="text"
+          class="form__control"
+          formControlName="lastName"
+          placeholder="Фамилия"
+        />
+
+        <div class="form__validation" *ngIf="form.touched && form.invalid">
+          <small class="form__error" *ngIf="lastName?.hasError('minlength')"
+            >Поле должно состоять более 2 или более символов</small
+          >
+        </div>
+      </div>
+
+      <div class="form__field">
+        <input
+          type="text"
+          class="form__control"
+          formControlName="email"
+          placeholder="Эл.почта"
+        />
+
+        <div class="form__validation" *ngIf="form.touched && form.invalid">
+          <small class="form__error" *ngIf="email?.hasError('email')"
+            >Введите корректный Email</small
+          >
+          <small class="form__error" *ngIf="email?.hasError('required')"
+            >Введите Email</small
+          >
+        </div>
+      </div>
+
+      <div class="form__field">
+        <input
+          type="password"
+          class="form__control"
+          formControlName="password"
+          placeholder="Пароль"
+        />
+
+        <div class="form__validation" *ngIf="form.touched && form.invalid">
+          <small class="form__error" *ngIf="password?.hasError('required')"
+            >Введите пароль</small
+          >
+          <small class="form__error" *ngIf="password?.hasError('minlength')"
+            >Пароль должен содержать 6 или более символов</small
+          >
+        </div>
+      </div>
+
+      <div class="form__field">
+        <input
+          type="number"
+          class="form__control"
+          formControlName="phone"
+          placeholder="+380"
+        />
+
+        <div class="form__validation" *ngIf="form.touched && form.invalid">
+          <!-- <small class="form__error" *ngIf="phoneNumber!."
+            >Введите номер телефона</small
+          > -->
+          <!-- <small class="form__error" *ngIf="phone?.getError('minlength')"
+            >Пароль должен содержать 6 или более символов</small
+          > -->
+        </div>
+      </div>
+
+      <div class="form__redirect">
+        У Вас уже есть аккаунт?
+        <a class="form__link" routerLink="/admin/login">Войти</a>
+      </div>
+
+      <button class="form__action" type="submit" [disabled]="form.invalid">
+        Зарегистрироваться
+      </button>
+    </form>
+  </div>
+</div>

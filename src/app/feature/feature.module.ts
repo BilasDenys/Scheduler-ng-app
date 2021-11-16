@@ -7,8 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MainLayoutComponent } from './views/main-layout/main-layout.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { AboutPageComponent } from './views/about-page/about-page.component';
-import { EventsComponent } from './components/events/events.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { EventComponent } from './components/event/event.component';
 
 const routes: Routes = [
   {
@@ -23,7 +23,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MainLayoutComponent, HomePageComponent, AboutPageComponent, EventsComponent, CalendarComponent],
+  declarations: [
+    MainLayoutComponent,
+    HomePageComponent,
+    AboutPageComponent,
+    CalendarComponent,
+    EventComponent,
+  ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })

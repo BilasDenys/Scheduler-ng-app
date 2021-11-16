@@ -12,6 +12,10 @@ $bg-color-basic: rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
 }
 
+li {
+  list-style: none;
+}
+
 body,
 html {
   font-family: "Inter", sans-serif;

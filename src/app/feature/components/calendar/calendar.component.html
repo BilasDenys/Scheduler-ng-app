@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="display-date">
+      {{ displayDate }}
+      <div class="actions">
+        <button (click)="changeMonth(-1)">prev</button>
+        <button (click)="changeMonth(1)">next</button>
+      </div>
+    </div>
+    <div class="week-days">
+      <div class="day" *ngFor="let day of weekDays">
+        {{ day | titlecase }}
+      </div>
+    </div>
+    <div class="calendar-days">
+      <div
+        class="day"
+        (click)="clickDay(day)"
+        [ngClass]="{
+          selectedDay: clickedDay
+            ? day.value === clickedDay.value
+              ? true
+              : false
+            : false,
+          currentDay: day.active
+        }"
+        *ngFor="let day of calendar"
+      >
+        {{ day.value }}
+      </div>
+    </div>
+  </div>
+</div>

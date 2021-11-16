@@ -1,0 +1,47 @@
+@import "../../../../styles.scss";
+
+.container {
+  // background-color: rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  // box-shadow: $shadow;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+.display-date {
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+.week-days,
+.calendar-days {
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.day {
+  width: 80px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: white;
+  // margin: 0.25rem;
+  border-radius: 5px;
+}
+.currentDay {
+  color: coral;
+}
+
+.selectedDay {
+  font-size: 1rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}

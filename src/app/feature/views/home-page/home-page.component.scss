@@ -1,0 +1,23 @@
+@import "../../../../styles.scss";
+
+.home-page {
+  display: flex;
+
+  .calendar {
+    flex: 0.75;
+    // background-color: coral;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: $bg-color-basic;
+    box-sizing: border-box;
+  }
+  .events {
+    flex: 1;
+    // background-color: pink;
+    height: 100vh;
+    box-sizing: border-box;
+
+    padding: 1.5rem 1rem;
+  }
+}

@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "node_modules/normalize.css/normalize";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&display=swap");
+
+$shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+$bg-color-basic: rgba(0, 0, 0, 0.05);
+
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +20,7 @@ html {
 .modal {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: $bg-color-basic;
   position: fixed;
   top: 0;
   left: 0;
@@ -35,6 +40,7 @@ html {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    box-shadow: $shadow;
   }
 }
 

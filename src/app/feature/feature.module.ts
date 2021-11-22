@@ -9,6 +9,8 @@ import { HomePageComponent } from './views/home-page/home-page.component';
 import { AboutPageComponent } from './views/about-page/about-page.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { EventComponent } from './components/event/event.component';
+import { CreateEventComponent } from './components/create-event/create-event.component';
+import { StopPropagationDirective } from './directives/stop-propagation.directive';
 
 const routes: Routes = [
   {
@@ -29,6 +31,8 @@ const routes: Routes = [
     AboutPageComponent,
     CalendarComponent,
     EventComponent,
+    CreateEventComponent,
+    StopPropagationDirective,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule],

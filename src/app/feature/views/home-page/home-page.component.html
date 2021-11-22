@@ -3,9 +3,36 @@
     <app-calendar></app-calendar>
   </section>
   <section class="events">
-    <h2 class="events__title">События</h2>
+    <section class="events__create-event" stop-propagation>
+      <app-create-event
+        *ngIf="showModal"
+        (emitShowModal)="changeMonth($event)"
+      ></app-create-event>
+    </section>
+    <header class="events__header">
+      <div class="events__title">События</div>
+      <button class="events__action" (click)="createEvent()">+</button>
+    </header>
     <div class="timeline">
       <ul class="timeline__menu">
+        <li class="timeline__list">
+          <div class="timeline__content">
+            <h1>11:00 - 12:00</h1>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum
+              tempora dignissimos quidem.
+            </p>
+          </div>
+        </li>
+        <li class="timeline__list">
+          <div class="timeline__content">
+            <h1>11:00 - 12:00</h1>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum
+              tempora dignissimos quidem.
+            </p>
+          </div>
+        </li>
         <li class="timeline__list">
           <div class="timeline__content">
             <h1>11:00 - 12:00</h1>

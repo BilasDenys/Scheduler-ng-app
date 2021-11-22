@@ -1,0 +1,36 @@
+<div class="modal" (click)="showModal($event)">
+  <div class="modal__content">
+    <button class="modal__action close" (click)="closeModal()">Закрыть</button>
+    <h2 class="modal__title">Создать событие</h2>
+
+    <form class="modal__form">
+      <div class="modal__form-field">
+
+        <label class="modal__label">
+          Hours:
+        </label>
+        <button (click)="changeTime(-1)">-</button>
+        <button (click)="changeTime(1)">+</button>
+        <input type="number" [(ngModel)]="hours" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="modal__form-field">
+
+        <label class="modal__label">
+          Minutes:
+        </label>
+        <button (click)="changeMinutes(-1)">-</button>
+        <button (click)="changeMinutes(1)">+</button>
+        <input type="number" [(ngModel)]="minutes" [ngModelOptions]="{standalone: true}" >
+
+      </div>
+
+      <div class="modal__form-field">
+        Description
+        <input  [(ngModel)]="description" [ngModelOptions]="{standalone: true}"/>
+      </div>
+
+
+      <button class="modal__action" type="submit">Добавить</button>
+    </form>
+  </div>
+</div>

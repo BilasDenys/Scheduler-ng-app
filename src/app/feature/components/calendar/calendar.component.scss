@@ -3,7 +3,13 @@
 .container {
   // background-color: rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  // box-shadow: $shadow;
+  box-shadow: $shadow;
+  border-radius: 10px;
+  margin-top: -3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .wrapper {
   display: flex;
@@ -11,23 +17,24 @@
   margin-top: 5rem;
 }
 .display-date {
-  max-width: 500px;
+  max-width: 480px;
   display: flex;
   justify-content: space-between;
   margin-left: 2rem;
   margin-bottom: 1rem;
+  background-color: coral;
 }
 .week-days,
 .calendar-days {
-  max-width: 600px;
+  max-width: 450px;
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
 
 .day {
-  width: 80px;
-  height: 35px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,6 +44,9 @@
 }
 .currentDay {
   color: coral;
+  background-color: $bg-color-basic;
+  border-radius: 50%;
+  box-shadow: $shadow;
 }
 
 .selectedDay {

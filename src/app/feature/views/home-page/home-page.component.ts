@@ -16,7 +16,6 @@ export class HomePageComponent implements OnInit {
 
   createEvent() {
     this.showModalToggle();
-    console.log(this.showModal);
   }
 
   showModalToggle() {

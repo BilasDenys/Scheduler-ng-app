@@ -32,7 +32,7 @@
     background-color: $bg-color-basic;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     padding-top: 150px;
     &__header {
       display: flex;
@@ -61,6 +61,93 @@
   }
 }
 
+.container {
+  margin: 20px 60px;
+
+  &__menu {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: px;
+      height: 100%;
+      border: 2px dashed white;
+    }
+  }
+
+  &__list {
+    margin: 50px 60px;
+    padding: 1rem 1.25rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: $shadow;
+
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60px;
+      width: px;
+      height: 100%;
+      border: 2px solid coral;
+    }
+  }
+
+  &__span {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60px;
+    width: 0;
+    height: 100%;
+    // border: 1px solid green;
+
+    &:before,
+    &:after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid coral;
+      position: absolute;
+      left: -7px;
+    }
+
+    &::before {
+      top: -10px;
+      left: -5px;
+      background-color: coral;
+    }
+    &::after {
+      left: -5px;
+      top: 100%;
+      background-color: coral;
+    }
+  }
+
+  &__start {
+    position: absolute;
+    top: -12px;
+    left: -104px;
+  }
+
+  &__end {
+    position: absolute;
+    top: 85px;
+    left: -112px;
+  }
+
+  &__info {
+  }
+  &__type {
+  }
+}
+
 .timeline {
   position: relative;
   // border-left: 4px solid #000;
@@ -68,51 +155,5 @@
 
   &__menu {
     margin-top: -1.25rem;
-  }
-
-  &__list {
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: $shadow;
-    margin: 1rem 0;
-    background-color: white;
-    position: relative;
-    margin-left: 4rem;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-@media only screen and (min-width: 768px) {
-  .timeline {
-    &::before {
-      content: "";
-      position: absolute;
-      height: 100%;
-      width: 4px;
-      background-color: rgb(255, 89, 29);
-      transform: translateX(25px);
-    }
-
-    &__list {
-      width: auto;
-      margin-bottom: 25px;
-      position: relative;
-
-      transform: translateX(100%, -50%);
-
-      &::after {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: rgb(255, 89, 29);
-        border-radius: 50%;
-        top: 0;
-
-        transform: translate(-333%, 10%);
-      }
-    }
   }
 }

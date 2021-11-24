@@ -7,11 +7,17 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./create-event.component.scss'],
 })
 export class CreateEventComponent implements OnInit {
-  public hours!: number;
-  public minutes!: number;
   public _showModal!: boolean;
   public date!: Date;
-  public description!: string;
+
+  public _currentMinutes!: number;
+  public _currentHour!: number;
+
+  public minutes!: number;
+  public hours!: number;
+  public endHours!: number;
+  public endMinutes!: number;
+
 
   @Output() emitShowModal!: EventEmitter<boolean>;
 
@@ -19,26 +25,27 @@ export class CreateEventComponent implements OnInit {
     this._showModal = true;
     this.emitShowModal = new EventEmitter<boolean>();
     this.date = new Date();
+    this._currentMinutes = 0;
+    this._currentHour = 0;
+    this.hours = 0;
+    this.minutes = 0;
+    this.endHours = this.currentHour;
+    this.endMinutes = this.currentMinutes + 30;
+
+    if (this.endMinutes > 60) {
+      this.endHours++;
+      this.endMinutes = this.currentMinutes + 30 - 60;
+    } else {
+      this.endMinutes = this.currentMinutes + 30
+    }
+
   }
 
   ngOnInit(): void {
 
-    this.hours = this.date.getHours();
-    this.minutes = this.date.getMinutes();
+    this.hours = this.currentHour;
+    this.minutes = this.currentMinutes;
 
-  }
-
-  showModal(event: any) {
-    // // event.stopPropagation();
-    // const parentClassName = 'modal';
-    // // const modal = (this._showModal = !this._showModal);
-    // // console.log(modal);
-    // // this.emitShowModal.emit(modal);
-    // if (event.target.className === parentClassName) {
-    //   const modal = (this._showModal = !this._showModal);
-    //   this.emitShowModal.emit(modal);
-    // }
-    // console.log(event);
   }
 
   closeModal() {
@@ -46,19 +53,17 @@ export class CreateEventComponent implements OnInit {
     this.emitShowModal.emit(modal);
   }
 
-  onSubmit() {
+  changeHour(step: number): void {
 
-    this.emitShowModal.emit(!this._showModal);
-  }
-
-  changeTime(step: number): void {
     const newHours = this.hours + step;
 
-    if (newHours < this.hours) {
-      this.hours = this.date.getHours();
-      this.minutes = this.date.getMinutes();
+    if (newHours <= this.currentHour) {
+
+      this.hours = this.currentHour;
+      this.minutes = this.currentMinutes;
 
     } else {
+
       this.hours = newHours;
 
     }
@@ -66,16 +71,74 @@ export class CreateEventComponent implements OnInit {
   }
 
   changeMinutes(step: number): void {
+
     let newMinutes;
     step !== 0 ? newMinutes = this.minutes + step : newMinutes = this.minutes;
 
-    if (this.hours !== this.date.getHours()) {
+    if (this.hours !== this.currentHour) {
 
       this.minutes = newMinutes;
 
     } else {
-      newMinutes < this.minutes ? this.minutes = this.date.getMinutes() : this.minutes = newMinutes;
+      newMinutes < this.currentMinutes ? this.minutes = this.currentMinutes : this.minutes = newMinutes;
     }
 
   }
+
+  changeEndHours(step: number): void {
+
+  }
+
+  changeEndMinutes(step: number): void {
+
+    let newMinutes = this.endMinutes + step;
+
+    if(newMinutes < this.endMinutes ) {
+
+      const fixMinutes = this.currentMinutes + 30;
+      console.log(fixMinutes);
+
+      fixMinutes > 60 ? this.endHours++ && ( this.endMinutes = (this.currentMinutes + 30) - 60) : this.endMinutes = newMinutes;
+
+      // this.endMinutes =
+      // this.endMinutes = this.currentMinutes + 30
+    } else {
+      this.endMinutes = newMinutes;
+    }
+
+
+    // if (newMinutes < this.endMinutes || newMinutes === this.endMinutes) {
+    //   this.endMinutes = this.currentMinutes + 30;
+    // } else {
+    //   this.endMinutes = newMinutes;
+    // }
+
+
+    // if(newEndMinutes < this.endMinutes ) {
+    //   this.endMinutes = this.currentMinutes + 30;
+    // } else {
+    //   this.endMinutes = newEndMinutes;
+    // }
+
+
+    // if (this.endMinutes < newEndMinutes) {
+    //   this.endMinutes = this.currentMinutes + 30;
+    // } else if (newEndMinutes > 60) {
+    //   this.endHours++;
+    //   this.endMinutes = this.currentMinutes + 30 - 60;
+    // } else {
+    //   this.endMinutes = newEndMinutes;
+    // }
+
+  }
+
+  get currentHour() {
+    return this.date.getHours();
+  }
+
+  get currentMinutes() {
+    return this.date.getMinutes();
+  }
+
+
 }

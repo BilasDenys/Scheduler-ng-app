@@ -1,5 +1,6 @@
 <div class="home-page">
   <section class="calendar">
+    <div class="calendar__title">Календарь</div>
     <app-calendar></app-calendar>
   </section>
   <section class="events">
@@ -13,7 +14,34 @@
       <div class="events__title">События</div>
       <button class="events__action" (click)="createEvent()">+</button>
     </header>
-    <div class="timeline">
+
+    <div class="container">
+      <ul class="container__menu">
+        <li class="container__list">
+          <span class="container__span"></span>
+          <div class="container__title">Title</div>
+          <div class="container__info">Information</div>
+          <div class="container__type">Type of information</div>
+          <div class="container__time">
+            <span class="container__start"> 9:00 </span>
+            <span class="container__end"> 10:00 </span>
+          </div>
+        </li>
+        <li class="container__list">
+          <span class="container__span"></span>
+          <div class="container__title">Title</div>
+          <div class="container__info">Information</div>
+          <div class="container__type">Type of information</div>
+          <div class="container__time">
+            <span class="container__start"> 9:00 </span>
+            <span class="container__end"> 10:00 </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div class="timeline">
+
       <ul class="timeline__menu">
         <li class="timeline__list">
           <div class="timeline__content">
@@ -61,6 +89,6 @@
           </div>
         </li>
       </ul>
-    </div>
+    </div> -->
   </section>
 </div>

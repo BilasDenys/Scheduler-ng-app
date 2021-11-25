@@ -3,25 +3,37 @@
 .home-page {
   display: flex;
   position: relative;
-  // padding: 400px 0;
+
+  .wrapper {
+    display: flex;
+    margin-top: 7rem;
+  }
 
   .calendar {
-    flex: 0.75;
-    // background-color: coral;
+    flex: 1;
     min-height: 100vh;
+    max-width: 490px;
+    margin: 0 auto;
     height: auto;
     display: flex;
-    justify-content: center;
-    position: fixed;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 0 15px;
     top: 150px;
     left: 0;
     right: 50%;
 
     box-sizing: border-box;
+
+    &__title {
+      padding-left: 1rem;
+      align-self: flex-start;
+    }
   }
   .events {
+    margin-top: -2.5rem;
     flex: 1;
-    position: fixed;
     left: 50%;
     right: 0;
     overflow-x: scroll;
@@ -34,6 +46,7 @@
     flex-direction: column;
     justify-content: start;
     padding-top: 150px;
+
     &__header {
       display: flex;
       justify-content: space-between;
@@ -47,9 +60,6 @@
       width: 45px;
       border-radius: 50%;
       padding-bottom: 2px;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
       box-shadow: $shadow;
     }
 
@@ -79,13 +89,15 @@
   }
 
   &__list {
-    margin: 50px 60px;
+    margin: 50px 0 50px 60px;
     padding: 1rem 1.25rem;
     background-color: white;
     border-radius: 10px;
     box-shadow: $shadow;
 
     position: relative;
+    display: flex;
+    justify-content: space-between;
 
     &::before {
       content: "";
@@ -105,7 +117,6 @@
     left: -60px;
     width: 0;
     height: 100%;
-    // border: 1px solid green;
 
     &:before,
     &:after {
@@ -138,22 +149,123 @@
 
   &__end {
     position: absolute;
-    top: 85px;
+    top: 114px;
     left: -112px;
   }
 
-  &__info {
-  }
-  &__type {
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    button {
+      margin: 0.25rem 0;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 10px;
+      box-shadow: $shadow;
+
+      &:first-child {
+        background-color: red;
+        color: white;
+        opacity: 0.75;
+      }
+      &:last-child {
+        background-color: orange;
+        color: white;
+        opacity: 0.7;
+      }
+    }
   }
 }
 
-.timeline {
-  position: relative;
-  // border-left: 4px solid #000;
-  // margin-left: 50px;
+@media (max-width: 768px) {
+  .home-page {
+    flex-direction: column;
+  }
+}
 
-  &__menu {
-    margin-top: -1.25rem;
+@media (max-width: 992px) {
+  .home-page {
+    flex-direction: column;
+  }
+
+  .wrapper {
+    margin-top: 5rem;
+  }
+
+  .container {
+    margin: -30px 10px 20px 0;
+
+    .events {
+      margin-top: -1.5rem;
+    }
+
+    &__list {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: -30px;
+        // width: px;
+        height: 75%;
+        border: 2px solid coral;
+      }
+    }
+    &__span {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60px;
+      width: 0;
+      height: 100%;
+
+      &:before,
+      &:after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid coral;
+        position: absolute;
+        left: -7px;
+      }
+
+      &::before {
+        top: 10px;
+        left: 25px;
+        background-color: coral;
+      }
+      &::after {
+        left: 25px;
+        top: 80%;
+        background-color: coral;
+      }
+    }
+
+    &__start {
+      position: absolute;
+      top: -20px;
+      left: -45px;
+    }
+
+    &__end {
+      position: absolute;
+      top: 121px;
+      left: -52px;
+    }
+
+    &__menu {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -30px;
+        width: px;
+        height: 100%;
+        border: 2px dashed white;
+      }
+    }
   }
 }

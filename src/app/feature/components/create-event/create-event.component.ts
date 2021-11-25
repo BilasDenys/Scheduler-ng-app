@@ -1,5 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-create-event',
@@ -12,124 +11,85 @@ export class CreateEventComponent implements OnInit {
 
   public _currentMinutes!: number;
   public _currentHour!: number;
-
-  public minutes!: number;
-  public hours!: number;
-  public endHours!: number;
-  public endMinutes!: number;
-
-
   @Output() emitShowModal!: EventEmitter<boolean>;
-
+  public startHour!: number;
+  public startMinutes!: number;
+  public endHour!: number;
+  public endMinutes!: number;
   constructor() {
     this._showModal = true;
     this.emitShowModal = new EventEmitter<boolean>();
     this.date = new Date();
-    this._currentMinutes = 0;
-    this._currentHour = 0;
-    this.hours = 0;
-    this.minutes = 0;
-    this.endHours = this.currentHour;
-    this.endMinutes = this.currentMinutes + 30;
-
-    if (this.endMinutes > 60) {
-      this.endHours++;
-      this.endMinutes = this.currentMinutes + 30 - 60;
-    } else {
-      this.endMinutes = this.currentMinutes + 30
-    }
-
+    this.startHour = this.currentHour;
+    this.startMinutes = 0;
+    this.endHour = 0;
+    this.endMinutes = 0;
   }
 
-  ngOnInit(): void {
-
-    this.hours = this.currentHour;
-    this.minutes = this.currentMinutes;
-
-  }
+  ngOnInit(): void {}
 
   closeModal() {
     const modal = (this._showModal = !this._showModal);
     this.emitShowModal.emit(modal);
   }
 
-  changeHour(step: number): void {
-
-    const newHours = this.hours + step;
-
-    if (newHours <= this.currentHour) {
-
-      this.hours = this.currentHour;
-      this.minutes = this.currentMinutes;
-
+  changeStartHour(step: number) {
+    if (step > 0) {
+      this.startHour++;
+      if (this.startHour > 23) {
+        this.startHour = 0;
+      }
     } else {
-
-      this.hours = newHours;
-
+      this.startHour--;
+      if (this.startHour < 0) {
+        this.startHour = 23;
+      }
     }
-
   }
 
-  changeMinutes(step: number): void {
-
-    let newMinutes;
-    step !== 0 ? newMinutes = this.minutes + step : newMinutes = this.minutes;
-
-    if (this.hours !== this.currentHour) {
-
-      this.minutes = newMinutes;
-
+  changeStartMinutes(step: number) {
+    if (step > 0) {
+      this.startMinutes++;
+      if (this.startMinutes > 59) {
+        this.startMinutes = 0;
+        this.changeStartHour(1);
+      }
     } else {
-      newMinutes < this.currentMinutes ? this.minutes = this.currentMinutes : this.minutes = newMinutes;
+      this.startMinutes--;
+      if (this.startMinutes < 0) {
+        this.startMinutes = 59;
+        this.changeStartHour(-1);
+      }
     }
-
   }
 
-  changeEndHours(step: number): void {
-
-  }
-
-  changeEndMinutes(step: number): void {
-
-    let newMinutes = this.endMinutes + step;
-
-    if(newMinutes < this.endMinutes ) {
-
-      const fixMinutes = this.currentMinutes + 30;
-      console.log(fixMinutes);
-
-      fixMinutes > 60 ? this.endHours++ && ( this.endMinutes = (this.currentMinutes + 30) - 60) : this.endMinutes = newMinutes;
-
-      // this.endMinutes =
-      // this.endMinutes = this.currentMinutes + 30
+  changeEndHour(step: number) {
+    if (step > 0) {
+      this.endHour++;
+      if (this.endHour > 23) {
+        this.endHour = 0;
+      }
     } else {
-      this.endMinutes = newMinutes;
+      this.endHour--;
+      if (this.endHour < 0) {
+        this.endHour = 23;
+      }
     }
-
-
-    // if (newMinutes < this.endMinutes || newMinutes === this.endMinutes) {
-    //   this.endMinutes = this.currentMinutes + 30;
-    // } else {
-    //   this.endMinutes = newMinutes;
-    // }
-
-
-    // if(newEndMinutes < this.endMinutes ) {
-    //   this.endMinutes = this.currentMinutes + 30;
-    // } else {
-    //   this.endMinutes = newEndMinutes;
-    // }
-
-
-    // if (this.endMinutes < newEndMinutes) {
-    //   this.endMinutes = this.currentMinutes + 30;
-    // } else if (newEndMinutes > 60) {
-    //   this.endHours++;
-    //   this.endMinutes = this.currentMinutes + 30 - 60;
-    // } else {
-    //   this.endMinutes = newEndMinutes;
-    // }
-
+  }
+  changeEndMinutes(step: number) {
+    if (step > 0) {
+      this.endMinutes++;
+      if (this.endMinutes > 59) {
+        this.endMinutes = 0;
+        this.changeEndHour(1);
+      }
+    } else {
+      this.endMinutes--;
+      if (this.endMinutes < 0) {
+        this.endMinutes = 59;
+        this.changeEndHour(-1);
+      }
+    }
   }
 
   get currentHour() {
@@ -139,6 +99,4 @@ export class CreateEventComponent implements OnInit {
   get currentMinutes() {
     return this.date.getMinutes();
   }
-
-
 }

@@ -1,59 +1,85 @@
 @import "../../../../styles.scss";
 
-.container {
-  // background-color: rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  box-shadow: $shadow;
-  border-radius: 10px;
-  margin-top: -3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .wrapper {
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
+.container {
+  max-width: 460px;
+  padding: 1rem;
+  box-shadow: $shadow;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+
+  &__actions {
+    button {
+      border: none;
+      margin: 0 0.25rem;
+      padding: 0.75rem;
+      border-radius: 10px;
+      font-size: 1.25rem;
+      box-shadow: $shadow;
+      background-color: coral;
+      color: white;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
 .display-date {
-  max-width: 480px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-left: 2rem;
-  margin-bottom: 1rem;
-  background-color: coral;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border-radius: 10px 10px 0 0;
+  font-size: 1.5rem;
 }
 .week-days,
 .calendar-days {
-  max-width: 450px;
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
 
+.week-days {
+  font-weight: 600px;
+  font-size: 18px;
+  color: black;
+  border-top: 1px solid coral;
+  border-bottom: 1px solid coral;
+  margin: 0 0.15rem;
+  font-size: 1.15rem;
+}
+
 .day {
+  min-width: 25px;
+  min-height: 25px;
   width: 60px;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: white;
-  // margin: 0.25rem;
   border-radius: 5px;
 }
 .currentDay {
-  color: coral;
-  background-color: $bg-color-basic;
+  background-color: coral;
+  color: white;
   border-radius: 50%;
   box-shadow: $shadow;
 }
 
 .selectedDay {
-  font-size: 1rem;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 50%;
+  box-shadow: $shadow;
+  font-size: 1.5rem;
 }
 
 .has-events {
@@ -67,4 +93,73 @@
     position: absolute;
     bottom: 12px;
   }
+}
+
+@media (max-width: 375px) {
+  .day {
+    padding: 0;
+    margin: 0;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 576) {
+  .container {
+    max-width: 350px;
+  }
+  .day {
+    margin: 0.75rem 0.1rem;
+    width: 60px;
+    height: 60px;
+  }
+
+  .selectedDay {
+    font-size: 1.25rem;
+    border-radius: 50%;
+    box-shadow: $shadow;
+  }
+
+  .has-events {
+    position: relative;
+    &::after {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background-color: green;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 7px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .day {
+    margin: 0.75rem 0.1rem;
+    width: 45px;
+    height: 45px;
+  }
+
+  .selectedDay {
+    font-size: 1.25rem;
+    border-radius: 50%;
+    box-shadow: $shadow;
+  }
+
+  .has-events {
+    position: relative;
+    &::after {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background-color: green;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 7px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
 }

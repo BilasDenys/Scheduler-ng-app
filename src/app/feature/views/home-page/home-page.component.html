@@ -1,94 +1,65 @@
 <div class="home-page">
-  <section class="calendar">
-    <div class="calendar__title">Календарь</div>
-    <app-calendar></app-calendar>
-  </section>
+  <div class="wrapper">
+    <section class="calendar">
+      <h2 class="calendar__title">Календарь</h2>
+      <app-calendar></app-calendar>
+    </section>
+  </div>
+
   <section class="events">
-    <section class="events__create-event" stop-propagation>
+    <section class="events__create-event">
+      <header class="events__header">
+        <div class="events__title">События</div>
+        <button class="events__action" (click)="createEvent()">+</button>
+      </header>
       <app-create-event
         *ngIf="showModal"
         (emitShowModal)="changeMonth($event)"
       ></app-create-event>
     </section>
-    <header class="events__header">
-      <div class="events__title">События</div>
-      <button class="events__action" (click)="createEvent()">+</button>
-    </header>
 
     <div class="container">
       <ul class="container__menu">
         <li class="container__list">
           <span class="container__span"></span>
-          <div class="container__title">Title</div>
-          <div class="container__info">Information</div>
-          <div class="container__type">Type of information</div>
+
+          <div class="content">
+            <div class="container__title">Title</div>
+            <div class="container__info">Information</div>
+            <div class="container__type">Type of information</div>
+          </div>
+
           <div class="container__time">
             <span class="container__start"> 9:00 </span>
             <span class="container__end"> 10:00 </span>
           </div>
+
+          <div class="container__actions">
+            <button class="container__button">Удалить</button>
+            <button class="container__button">Изменить</button>
+          </div>
         </li>
+
         <li class="container__list">
           <span class="container__span"></span>
-          <div class="container__title">Title</div>
-          <div class="container__info">Information</div>
-          <div class="container__type">Type of information</div>
+
+          <div class="content">
+            <div class="container__title">Title</div>
+            <div class="container__info">Information</div>
+            <div class="container__type">Type of information</div>
+          </div>
+
           <div class="container__time">
             <span class="container__start"> 9:00 </span>
             <span class="container__end"> 10:00 </span>
+          </div>
+
+          <div class="container__actions">
+            <button class="container__button">Удалить</button>
+            <button class="container__button">Изменить</button>
           </div>
         </li>
       </ul>
     </div>
-
-    <!-- <div class="timeline">
-
-      <ul class="timeline__menu">
-        <li class="timeline__list">
-          <div class="timeline__content">
-            <h1>11:00 - 12:00</h1>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum
-              tempora dignissimos quidem.
-            </p>
-          </div>
-        </li>
-        <li class="timeline__list">
-          <div class="timeline__content">
-            <h1>11:00 - 12:00</h1>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum
-              tempora dignissimos quidem.
-            </p>
-          </div>
-        </li>
-        <li class="timeline__list">
-          <div class="timeline__content">
-            <h1>11:00 - 12:00</h1>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum
-              tempora dignissimos quidem.
-            </p>
-          </div>
-        </li>
-        <li class="timeline__list">
-          <div class="timeline__content">
-            <h1>11:00 - 12:00</h1>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum
-              tempora dignissimos quidem.
-            </p>
-          </div>
-        </li>
-        <li class="timeline__list">
-          <div class="timeline__content">
-            <h1>11:00 - 12:00</h1>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum
-              tempora dignissimos quidem.
-            </p>
-          </div>
-        </li>
-      </ul>
-    </div> -->
   </section>
 </div>

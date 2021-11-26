@@ -11,17 +11,18 @@ export class CreateEventComponent implements OnInit {
 
   public _currentMinutes!: number;
   public _currentHour!: number;
-  @Output() emitShowModal!: EventEmitter<boolean>;
   public startHour!: number;
   public startMinutes!: number;
   public endHour!: number;
   public endMinutes!: number;
+  @Output() emitShowModal!: EventEmitter<boolean>;
+
   constructor() {
     this._showModal = true;
     this.emitShowModal = new EventEmitter<boolean>();
     this.date = new Date();
     this.startHour = this.currentHour;
-    this.startMinutes = 0;
+    this.startMinutes = this.currentMinutes;
     this.endHour = 0;
     this.endMinutes = 0;
   }
@@ -76,6 +77,7 @@ export class CreateEventComponent implements OnInit {
       }
     }
   }
+
   changeEndMinutes(step: number) {
     if (step > 0) {
       this.endMinutes++;

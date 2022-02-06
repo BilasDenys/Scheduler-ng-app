@@ -1,76 +1,99 @@
 <div class="modal">
   <div class="modal__content">
-    <small class="close" (click)="closeModal()">Закрыть</small>
+    <small class="modal_action close" (click)="closeModal()">Закрыть</small>
     <h2 class="modal__title">Создать событие</h2>
 
-    <div class="modal__container">
-      <div class="modal__wrapper">
-        <div class="modal__block">
-          <button class="modal__action left" (click)="changeStartHour(-1)">
-            <
-          </button>
+    <section class="modal__container">
+      <div class="modal__block">slid</div>
 
-          <div class="modal__display">
-            {{ startHour < 10 ? "0" + startHour : startHour }}
-          </div>
-
-          <button class="modal__action right" (click)="changeStartHour(1)">
-            >
-          </button>
-        </div>
-
-        <div class="modal_separate">:</div>
-
-        <div class="modal__block">
-          <button class="modal__action left" (click)="changeStartMinutes(-1)">
-            <
-          </button>
-
-          <div class="modal__display">
-            {{ startMinutes < 10 ? "0" + startMinutes : startMinutes }}
-          </div>
-
-          <button class="modal__action right" (click)="changeStartMinutes(1)">
-            >
-          </button>
-        </div>
-      </div>
-
-      <div class="modal__separator">-</div>
-
-      <div class="modal__wrapper">
-        <div class="modal__block">
-          <button class="modal__action left" (click)="changeEndHour(-1)">
-            <
-          </button>
-
-          <div class="modal__display">
-            {{ endHour < 10 ? "0" + endHour : endHour }}
-          </div>
-
-          <button class="modal__action right" (click)="changeEndHour(1)">
-            >
-          </button>
-        </div>
-
-        <div class="modal_separate">:</div>
-
-        <div class="modal__block">
-          <button class="modal__action left" (click)="changeEndMinutes(-1)">
-            <
-          </button>
-
-          <div class="modal__display">
-            {{ endMinutes < 10 ? "0" + endMinutes : endMinutes }}
-          </div>
-
-          <button class="modal__action right" (click)="changeEndMinutes(1)">
-            >
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <button class="modal__action button">Добавить</button>
+      <button class="modal__action" (click)="addEvent()">Add</button>
+    </section>
   </div>
 </div>
+
+<!--<div class="modal">-->
+<!--  <div class="modal__content">-->
+<!--    <small class="modal_action close" (click)="closeModal()">Закрыть</small>-->
+<!--    <h2 class="modal__title">Создать событие</h2>-->
+
+<!--    <div class="modal__container">-->
+<!--      <div class="modal__wrapper">-->
+<!--        <div class="modal__block">-->
+
+<!--          <div class="modal__display">-->
+<!-- <select [(ngModel)]="setStartHour" [value]="currentHour"> -->
+<!--            <select [(ngModel)]="setStartHour">-->
+<!--              <option-->
+<!--                *ngFor="let hour of hours"-->
+<!--                [value]="hour.value"-->
+<!--                [disabled]="hour.value != currentHour && hour.value < currentHour">-->
+<!--                {{ hour.value < 10 ? "0" + hour.value : hour.value }}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="modal_separate">:</div>-->
+
+<!--        <div class="modal__block">-->
+<!--          <div class="modal__display">-->
+<!--            <select [(ngModel)]="setStartMinutes">-->
+<!--              <option-->
+<!--                *ngFor="let minute of minutes"-->
+<!--                [value]="minute"-->
+<!--                [disabled]="+minute <= +currentMinutes && +currentHour === +setStartHour">-->
+<!--                {{+minute < 10 ? '0' + minute : minute}}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="modal__separator">-</div>-->
+
+<!--        <div class="modal__wrapper">-->
+<!--          <div class="modal__block">-->
+<!-- <button class="modal__action left" (click)="changeEndHour(-1)">
+            <
+          </button> -->
+
+<!--            <div class="modal__display">-->
+<!--              <select [(ngModel)]="setStartHour">-->
+<!--                <option-->
+<!--                  *ngFor="let hour of hours"-->
+<!--                  [value]="hour.value"-->
+<!--                  [disabled]="hour.value != currentHour && hour.value < currentHour">-->
+<!--                  {{ 10 + hour.value < 10 ? "0" + hour.value : hour.value }}-->
+<!--                </option>-->
+<!--              </select>-->
+<!--            </div>-->
+<!-- <button class="modal__action right" (click)="changeEndHour(1)">
+            >
+          </button> -->
+<!--          </div>-->
+
+<!--          <div class="modal_separate">:</div>-->
+
+<!--          <div class="modal__block">-->
+<!-- <button
+            class="modal__action left"
+            (click)="changeEndMinutes(currentHour - 1 < currentHour ? 0 : -1)"
+          >
+            <
+          </button> -->
+
+<!--            <div class="modal__display">-->
+
+<!--              {{ endMinutes < 10 ? "0" + endMinutes : endMinutes }}-->
+<!--            </div>-->
+
+<!-- <button class="modal__action right" (click)="changeEndMinutes(1)">
+            >
+          </button> -->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <button class="modal__action button" (click)="addEvent()">Добавить</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

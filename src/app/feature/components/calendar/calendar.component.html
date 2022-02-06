@@ -22,7 +22,9 @@
               ? true
               : false
             : false,
-          currentDay: day.active
+          currentDay: day.current,
+          'has-events': day.events.length !== 0,
+          'hover-day': day.value
         }"
         *ngFor="let day of calendar"
       >

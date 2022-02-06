@@ -14,6 +14,7 @@
 
   &__container {
     display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
@@ -40,21 +41,43 @@
     border: none;
     border-radius: 10px;
     font-size: 1rem;
+    box-shadow: styles.$bg-color-basic;
+    transition: all 0.15s ease-in-out;
+    // color: coral;
+
+    &:hover {
+      opacity: 0.75;
+    }
   }
 
   &__display {
     font-size: 2rem;
+    color: coral;
+  }
+
+  &__controls {
+  }
+
+  &__control {
+    min-width: 50px;
+  }
+  &__block {
+    display: flex;
+    justify-content: start;
   }
 }
 
-.button {
+.button,
+.close {
   background-color: green;
-  opacity: 0.75;
   color: white;
   margin-bottom: -1.25rem;
+  transition: all 0.15s ease-in-out;
 
   &:hover {
-    transform: scale(1.1);
+    opacity: 0.75;
+    box-shadow: styles.$bg-color-basic;
+    cursor: pointer;
   }
 }
 .modal__separator {
@@ -70,7 +93,6 @@
   background-color: coral;
   color: white;
   border-radius: 5px;
-
   box-shadow: styles.$bg-color-basic;
 }
 
@@ -82,4 +104,12 @@
 .right {
   transform: rotate(90deg);
   font-size: 2rem;
+}
+
+.small {
+  max-width: 89px;
+}
+
+.start {
+  display: flex;
 }

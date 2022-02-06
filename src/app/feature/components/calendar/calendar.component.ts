@@ -80,6 +80,10 @@ export class CalendarComponent implements OnInit {
   }
 
   clickDay(day: any) {
+    if (!!day.padding) {
+      return;
+    }
+
     this.clickedDay = day;
   }
 
